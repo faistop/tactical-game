@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b1oequy6sl78f"]
+
+[ext_resource type="Script" uid="uid://2h1yfcr3233v" path="res://Scripts/Unit.gd" id="1_4ebcl"]
+[ext_resource type="Script" uid="uid://ds67fgyhotmmg" path="res://Scripts/unit_stats.gd" id="1_x34o0"]
+[ext_resource type="Texture2D" uid="uid://munhrq5d6axi" path="res://Assets/Kenney/Textures/PNG/floor_ground_water.png" id="2_lat4j"]
+[ext_resource type="Script" uid="uid://b52jsunsap2kn" path="res://Abilities/abilitiy.gd" id="4_44vi3"]
+[ext_resource type="Script" uid="uid://bo0nhn03q57o4" path="res://Abilities/new_trapper_abbility.gd" id="5_vedoj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x34o0"]
+transparency = 1
+albedo_color = Color(0.9004952, 0.49451292, 0.13156307, 1)
+albedo_texture = ExtResource("2_lat4j")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ebcl"]
+material = SubResource("StandardMaterial3D_x34o0")
+
+[sub_resource type="Resource" id="Resource_andqd"]
+script = ExtResource("5_vedoj")
+metadata/_custom_type_script = "uid://bo0nhn03q57o4"
+
+[node name="EnemyMelee" type="Node3D" unique_id=635335770 node_paths=PackedStringArray("stats")]
+script = ExtResource("1_4ebcl")
+stats = NodePath("UnitStats")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1693880097]
+mesh = SubResource("CylinderMesh_4ebcl")
+
+[node name="UnitStats" type="Node" parent="." unique_id=387504782]
+script = ExtResource("1_x34o0")
+abilities = Array[ExtResource("4_44vi3")]([SubResource("Resource_andqd")])
+display_name = "Trapper"
+tags = Array[int]([1, 5])
+max_hp = 1
+damage = 2
+faction = 1
+move_range = 5
+
+[node name="HpAnchor" type="Marker3D" parent="." unique_id=773967816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36900562, -2.3)

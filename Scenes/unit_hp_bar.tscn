@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cpxo480ta8wae"]
+
+[ext_resource type="Script" uid="uid://dw7qptuh6yy2f" path="res://Scripts/unit_hp_bar.gd" id="1_0hxn4"]
+
+[node name="UnitHpBar" type="Control" unique_id=1271162343]
+custom_minimum_size = Vector2(200, 24)
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 0
+script = ExtResource("1_0hxn4")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=636844039]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pips" type="HBoxContainer" parent="Panel" unique_id=2013205771]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1

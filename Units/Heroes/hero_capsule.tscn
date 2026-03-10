@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bvf5odi2266jq"]
+
+[ext_resource type="Script" uid="uid://ds67fgyhotmmg" path="res://Scripts/unit_stats.gd" id="1_3ojpm"]
+[ext_resource type="Script" uid="uid://2h1yfcr3233v" path="res://Scripts/Unit.gd" id="1_vkt56"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1qvr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1syul"]
+material = SubResource("StandardMaterial3D_g1qvr")
+
+[node name="HeroCapsule" type="Node3D" unique_id=1338527886 node_paths=PackedStringArray("stats")]
+script = ExtResource("1_vkt56")
+stats = NodePath("UnitStats")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1037302237]
+mesh = SubResource("CapsuleMesh_1syul")
+
+[node name="UnitStats" type="Node" parent="." unique_id=694218523]
+script = ExtResource("1_3ojpm")
+max_hp = 2
+move_range = 4
+
+[node name="HpAnchor" type="Marker3D" parent="." unique_id=1950182279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2941519, -2.3)

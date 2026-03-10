@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dq1xx4y050hu1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaoau"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.09019608, 0.11764706, 0.50980395)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_crwf5"]
+material = SubResource("StandardMaterial3D_jaoau")
+size = Vector2(0.9, 0.9)
+
+[node name="HLRed" type="Node3D" unique_id=264359600]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=59864319]
+mesh = SubResource("PlaneMesh_crwf5")

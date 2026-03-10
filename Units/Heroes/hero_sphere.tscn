@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bt3eycvaw3hhw"]
+
+[ext_resource type="Script" uid="uid://2h1yfcr3233v" path="res://Scripts/Unit.gd" id="1_b72o0"]
+[ext_resource type="Script" uid="uid://ds67fgyhotmmg" path="res://Scripts/unit_stats.gd" id="1_r4g8y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkic0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_oy7iy"]
+material = SubResource("StandardMaterial3D_gkic0")
+
+[node name="HeroSphere" type="Node3D" unique_id=490221921 node_paths=PackedStringArray("stats")]
+script = ExtResource("1_b72o0")
+stats = NodePath("UnitStats")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=709412452]
+mesh = SubResource("SphereMesh_oy7iy")
+
+[node name="UnitStats" type="Node" parent="." unique_id=1753572260]
+script = ExtResource("1_r4g8y")
+max_hp = 3
+damage = 2
+move_range = 5
+
+[node name="HpAnchor" type="Marker3D" parent="." unique_id=186526064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3362149, -2.3)

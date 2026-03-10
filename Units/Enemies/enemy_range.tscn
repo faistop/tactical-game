@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dddo1370tlguw"]
+
+[ext_resource type="Script" uid="uid://ds67fgyhotmmg" path="res://Scripts/unit_stats.gd" id="1_he8t6"]
+[ext_resource type="Script" uid="uid://2h1yfcr3233v" path="res://Scripts/Unit.gd" id="1_nehol"]
+[ext_resource type="Texture2D" uid="uid://dna4rjy1u7l8b" path="res://Assets/Kenney/Textures/PNG/floor_ground_dirt.png" id="2_q2kl2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nehol"]
+albedo_color = Color(1, 0.5176471, 0.105882354, 1)
+albedo_texture = ExtResource("2_q2kl2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_q2kl2"]
+material = SubResource("StandardMaterial3D_nehol")
+height = 1.5
+
+[node name="EnemyRange" type="Node3D" unique_id=2032355433 node_paths=PackedStringArray("stats")]
+script = ExtResource("1_nehol")
+stats = NodePath("UnitStats")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2049806166]
+mesh = SubResource("SphereMesh_q2kl2")
+
+[node name="UnitStats" type="Node" parent="." unique_id=1990273609]
+script = ExtResource("1_he8t6")
+spawn_role = 1
+display_name = "Executer"
+tags = Array[int]([0])
+max_hp = 3
+faction = 1
+move_range = 2
+ai_role = 1
+shoot_range = 5
+shoot_min_range = 2
+
+[node name="HpAnchor" type="Marker3D" parent="." unique_id=559525529]
+transform = Transform3D(1, 0, 0, 0, 2.363463, 0, 0, 0, 1, 0, -0.20107543, -2.3)

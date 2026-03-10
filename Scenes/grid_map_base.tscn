@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://3f3bxuy280ed"]
+
+[ext_resource type="Texture2D" uid="uid://jevi1x7s7ybw" path="res://Assets/Kenney/Textures/PNG/floor_ground_grass.png" id="1_r7vhd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6ehj"]
+albedo_texture = ExtResource("1_r7vhd")
+
+[sub_resource type="BoxMesh" id="BoxMesh_x8nxg"]
+material = SubResource("StandardMaterial3D_p6ehj")
+
+[node name="GridMapBase" type="Node3D" unique_id=440469307]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1940537287]
+mesh = SubResource("BoxMesh_x8nxg")

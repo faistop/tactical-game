@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://dpvg0tspj4xpn"]
+
+[ext_resource type="MeshLibrary" uid="uid://bu6x627o8v04u" path="res://Tiles/grid_tiles.tres" id="1_b25br"]
+[ext_resource type="Script" uid="uid://dhbqxr6d063ln" path="res://Scripts/board.gd" id="1_hdvqd"]
+[ext_resource type="Script" uid="uid://dcy6u13lrykl7" path="res://Scripts/battle_state.gd" id="3_3gnqe"]
+[ext_resource type="Script" uid="uid://tde0wxcbb1kq" path="res://Scripts/battle_input_controller.gd" id="3_anwxn"]
+[ext_resource type="Script" uid="uid://bdrwc4gf6hk12" path="res://Scripts/unit_spawner.gd" id="4_e5vbs"]
+[ext_resource type="Script" uid="uid://brbr6eh0gs2r0" path="res://Scripts/battle_command_controller.gd" id="5_20f6w"]
+[ext_resource type="Script" uid="uid://bvwo33n87j48b" path="res://Scripts/AI/EnemyAbility.gd" id="6_tfvgr"]
+[ext_resource type="Script" uid="uid://w7xes8p5umm7" path="res://Scripts/highlight_manager.gd" id="6_w4764"]
+[ext_resource type="Script" uid="uid://dtx1yr8xrwu6r" path="res://Scripts/AI/TrapperAbility.gd" id="7_kbww3"]
+[ext_resource type="PackedScene" uid="uid://dkw83j38i2g57" path="res://VFX/Highlight/hl_green.tscn" id="7_ms847"]
+[ext_resource type="PackedScene" uid="uid://dq1xx4y050hu1" path="res://VFX/Highlight/hl_red.tscn" id="8_f4ggb"]
+[ext_resource type="PackedScene" uid="uid://vtkihvwamd57" path="res://VFX/Highlight/hl_yellow.tscn" id="9_778cw"]
+[ext_resource type="PackedScene" uid="uid://b1oequy6sl78f" path="res://Units/Enemies/enemy_melee.tscn" id="11_wb0gu"]
+[ext_resource type="PackedScene" uid="uid://dddo1370tlguw" path="res://Units/Enemies/enemy_range.tscn" id="12_84vmf"]
+[ext_resource type="PackedScene" uid="uid://cmwsqfoipaadh" path="res://Units/Enemies/hive.tscn" id="12_f856b"]
+[ext_resource type="Script" uid="uid://eaqtv74f7j7b" path="res://Scripts/unit_hover_hp.gd" id="12_wb0gu"]
+[ext_resource type="PackedScene" uid="uid://cpxo480ta8wae" path="res://Scenes/unit_hp_bar.tscn" id="13_84vmf"]
+[ext_resource type="Script" uid="uid://c8onp400unlb5" path="res://Scripts/enemy_info_panel.gd" id="14_xdap8"]
+[ext_resource type="Script" uid="uid://dkdng1wohj0il" path="res://Scripts/pathfinder.gd" id="16_kbww3"]
+[ext_resource type="Script" uid="uid://f7k7p2cagkhq" path="res://Scripts/movement_resolver.gd" id="17_vol83"]
+[ext_resource type="Script" uid="uid://dj2k0mc45nalu" path="res://Scripts/ability_manager.gd" id="18_kre2b"]
+[ext_resource type="Script" uid="uid://donmdywcpgrpv" path="res://Scripts/cell_entities.gd" id="19_5gdnp"]
+[ext_resource type="Script" uid="uid://cpi1t6r6y56sk" path="res://Scripts/UnitStatusManager.gd" id="20_ys5i7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_anwxn"]
+size = Vector3(11, 0.2, 11)
+
+[sub_resource type="Resource" id="Resource_vol83"]
+script = ExtResource("7_kbww3")
+metadata/_custom_type_script = "uid://dtx1yr8xrwu6r"
+
+[node name="BattleScene" type="Node3D" unique_id=1847556233]
+
+[node name="Board" type="Node3D" parent="." unique_id=1841651328]
+script = ExtResource("1_hdvqd")
+
+[node name="Grid" type="GridMap" parent="Board" unique_id=1513068234]
+mesh_library = ExtResource("1_b25br")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(0, 0, 458752, 0, 1, 458752, 0, 2, 458752, 0, 3, 458752, 0, 4, 458752, 0, 5, 458752, 0, 6, 458752, 0, 7, 458752, 0, 8, 458752, 0, 9, 458752, 0, 10, 458752, 1, 0, 458752, 1, 1, 458752, 1, 2, 458752, 1, 3, 458752, 1, 4, 458752, 1, 5, 458752, 1, 6, 458752, 1, 7, 458752, 1, 8, 458752, 1, 9, 458752, 1, 10, 458752, 2, 0, 458752, 2, 1, 458752, 2, 2, 458752, 2, 3, 458752, 2, 4, 458752, 2, 5, 458752, 2, 6, 458752, 2, 7, 458752, 2, 8, 458752, 2, 9, 458752, 2, 10, 458752, 3, 0, 458752, 3, 1, 458752, 3, 2, 458752, 3, 3, 458752, 3, 4, 458752, 3, 5, 458752, 3, 6, 458752, 3, 7, 458752, 3, 8, 458752, 3, 9, 458752, 3, 10, 458752, 4, 0, 458752, 4, 1, 458752, 4, 2, 458752, 4, 3, 458752, 4, 4, 458752, 4, 5, 458752, 4, 6, 458752, 4, 7, 458752, 4, 8, 458752, 4, 9, 458752, 4, 10, 458752, 5, 0, 458752, 5, 1, 458752, 5, 2, 458752, 5, 3, 458752, 5, 4, 458752, 5, 5, 458752, 5, 6, 458752, 5, 7, 458752, 5, 8, 458752, 5, 9, 458752, 5, 10, 458752, 6, 0, 458752, 6, 1, 458752, 6, 2, 458752, 6, 3, 458752, 6, 4, 458752, 6, 5, 458752, 6, 6, 458752, 6, 7, 458752, 6, 8, 458752, 6, 9, 458752, 6, 10, 458752, 7, 0, 458752, 7, 1, 458752, 7, 2, 458752, 7, 3, 458752, 7, 4, 458752, 7, 5, 458752, 7, 6, 458752, 7, 7, 458752, 7, 8, 458752, 7, 9, 458752, 7, 10, 458752, 8, 0, 458752, 8, 1, 458752, 8, 2, 458752, 8, 3, 458752, 8, 4, 458752, 8, 5, 458752, 8, 6, 458752, 8, 7, 458752, 8, 8, 458752, 8, 9, 458752, 8, 10, 458752, 9, 0, 458752, 9, 1, 458752, 9, 2, 458752, 9, 3, 458752, 9, 4, 458752, 9, 5, 458752, 9, 6, 458752, 9, 7, 458752, 9, 8, 458752, 9, 9, 458752, 9, 10, 458752, 10, 0, 458752, 10, 1, 458752, 10, 2, 458752, 10, 3, 458752, 10, 4, 458752, 10, 5, 458752, 10, 6, 458752, 10, 7, 458752, 10, 8, 458752, 10, 9, 458752, 10, 10, 458752)
+}
+
+[node name="BoardCollision" type="StaticBody3D" parent="Board" unique_id=152112723]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/BoardCollision" unique_id=1238386520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 5.5)
+shape = SubResource("BoxShape3D_anwxn")
+
+[node name="Markers" type="Node3D" parent="Board" unique_id=918134982]
+
+[node name="Units" type="Node3D" parent="." unique_id=909404655]
+
+[node name="VFX" type="Node3D" parent="." unique_id=63184609]
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=321916377]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=1881428192]
+transform = Transform3D(0.7071067, -0.49999997, 0.4999999, 0, 0.70710665, 0.70710677, -0.7071067, -0.49999997, 0.4999999, 15, 15, 15)
+projection = 1
+size = 13.428156
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CameraRig" unique_id=1388306660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.909869, 21.324982, 4.89279)
+
+[node name="Systems" type="Node" parent="." unique_id=786129971]
+
+[node name="BattleState" type="Node3D" parent="Systems" unique_id=641574988]
+script = ExtResource("3_3gnqe")
+grid_path = NodePath("../../Board/Grid")
+unit_status_manager_path = NodePath("../UnitStatusManager")
+cell_entities_path = NodePath("../CellEntities")
+
+[node name="BattleInputController" type="Node3D" parent="Systems" unique_id=576255505 node_paths=PackedStringArray("board", "camera")]
+script = ExtResource("3_anwxn")
+board = NodePath("../../Board")
+camera = NodePath("../../CameraRig/Camera3D")
+
+[node name="BattleCommandController" type="Node3D" parent="Systems" unique_id=241441651]
+script = ExtResource("5_20f6w")
+enemy_abilities = Array[ExtResource("6_tfvgr")]([SubResource("Resource_vol83")])
+btn_move_path = NodePath("../../UI/HUD/ActionButtons/BtnMove")
+btn_attack_path = NodePath("../../UI/HUD/ActionButtons/BtnAttack")
+btn_clean_path = NodePath("../../UI/HUD/ActionButtons/BtnClean")
+ability_manager_path = NodePath("../AbilityManager")
+battle_state_path = NodePath("../BattleState")
+input_controller_path = NodePath("../BattleInputController")
+unit_spawner_path = NodePath("../UnitSpawner")
+highlight_path = NodePath("../HighlightManager")
+pathfinder_path = NodePath("../Pathfinder")
+resolver_path = NodePath("../MovementResolver")
+
+[node name="HighlightManager" type="Node3D" parent="Systems" unique_id=1618868807]
+script = ExtResource("6_w4764")
+green_tile_scene = ExtResource("7_ms847")
+red_tile_scene = ExtResource("8_f4ggb")
+yellow_tile_scene = ExtResource("9_778cw")
+floor_world_y = 1.0
+grid_path = NodePath("../../Board/Grid")
+board_layer_y = 1
+y_offset = 0.03
+
+[node name="UnitSpawner" type="Node3D" parent="Systems" unique_id=1175970728]
+script = ExtResource("4_e5vbs")
+hive_scene = ExtResource("12_f856b")
+highlight_path = NodePath("../HighlightManager")
+enemy_seed = 12344
+enemy_randomize_each_run = true
+enemy_units = Array[PackedScene]([ExtResource("11_wb0gu"), ExtResource("12_84vmf"), ExtResource("11_wb0gu"), ExtResource("11_wb0gu"), ExtResource("12_84vmf")])
+board_layer_y = 1
+battle_state_path = NodePath("../BattleState")
+input_controller_path = NodePath("../BattleInputController")
+units_root_path = NodePath("../../Units")
+grid_path = NodePath("../../Board/Grid")
+
+[node name="TurnManager" type="Node" parent="Systems" unique_id=547605162]
+
+[node name="Pathfinder" type="Node" parent="Systems" unique_id=650102037]
+script = ExtResource("16_kbww3")
+
+[node name="MovementResolver" type="Node" parent="Systems" unique_id=1999486332]
+script = ExtResource("17_vol83")
+
+[node name="AbilityManager" type="Node" parent="Systems" unique_id=1877220653]
+script = ExtResource("18_kre2b")
+
+[node name="CellEntities" type="Node" parent="Systems" unique_id=1742591431]
+script = ExtResource("19_5gdnp")
+
+[node name="UnitStatusManager" type="Node" parent="Systems" unique_id=120715634]
+script = ExtResource("20_ys5i7")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1982503754]
+
+[node name="HUD" type="Control" parent="UI" unique_id=832143004]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UnitHoverHP" type="Control" parent="UI/HUD" unique_id=884743517]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 24.0
+script = ExtResource("12_wb0gu")
+camera_path = NodePath("../../../CameraRig/Camera3D")
+battle_state_path = NodePath("../../../Systems/BattleState")
+input_controller_path = NodePath("../../../Systems/BattleInputController")
+hp_bar_scene = ExtResource("13_84vmf")
+
+[node name="EnemyInfoPanel" type="PanelContainer" parent="UI/HUD" unique_id=315142762]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("14_xdap8")
+battle_command_controller_path = NodePath("../../../Systems/BattleCommandController")
+name_label_path = NodePath("VBox/NameLabel")
+tags_label_path = NodePath("VBox/TagsLabel")
+
+[node name="VBox" type="VBoxContainer" parent="UI/HUD/EnemyInfoPanel" unique_id=875504490]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UI/HUD/EnemyInfoPanel/VBox" unique_id=743236317]
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="TagsLabel" type="Label" parent="UI/HUD/EnemyInfoPanel/VBox" unique_id=1487071040]
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="ActionButtons" type="HBoxContainer" parent="UI/HUD" unique_id=719140870]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 15.2
+anchor_right = 4.75
+anchor_bottom = 16.125
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="BtnMove" type="Button" parent="UI/HUD/ActionButtons" unique_id=58886167]
+layout_mode = 2
+text = "MOVE"
+
+[node name="BtnAttack" type="Button" parent="UI/HUD/ActionButtons" unique_id=763926038]
+layout_mode = 2
+text = "ATTACK"
+
+[node name="BtnClean" type="Button" parent="UI/HUD/ActionButtons" unique_id=1192608582]
+layout_mode = 2
+text = "CLEAN"
+
+[node name="Debug" type="Control" parent="UI" unique_id=1724166088]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 41.0
+offset_bottom = 42.0

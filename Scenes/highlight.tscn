@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c6ump3143lfgc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir4d6"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.5254902, 1, 0.21176471, 0.40392157)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_or5c4"]
+material = SubResource("StandardMaterial3D_ir4d6")
+size = Vector2(0.9, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm4tn"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.09019608, 0.15686275, 0.40392157)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xmlii"]
+material = SubResource("StandardMaterial3D_dm4tn")
+size = Vector2(0.9, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_or5c4"]
+shading_mode = 0
+albedo_color = Color(0.8901961, 0.84705883, 0.105882354, 0.9098039)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dm4tn"]
+material = SubResource("StandardMaterial3D_or5c4")
+size = Vector2(0.9, 0.9)
+
+[node name="Highlight" type="Node3D" unique_id=586560611]
+
+[node name="HighlightMove" type="MeshInstance3D" parent="." unique_id=1743976679]
+mesh = SubResource("PlaneMesh_or5c4")
+
+[node name="HighlightAttack" type="MeshInstance3D" parent="." unique_id=1313787208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0556023, 0, 0)
+mesh = SubResource("PlaneMesh_xmlii")
+
+[node name="HighlightTrap" type="MeshInstance3D" parent="." unique_id=1538029757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1525441, 0, 0)
+mesh = SubResource("PlaneMesh_dm4tn")

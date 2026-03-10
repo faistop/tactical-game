@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cmwsqfoipaadh"]
+
+[ext_resource type="Texture2D" uid="uid://dna4rjy1u7l8b" path="res://Assets/Kenney/Textures/PNG/floor_ground_dirt.png" id="1_rl2i0"]
+[ext_resource type="Script" uid="uid://ds67fgyhotmmg" path="res://Scripts/unit_stats.gd" id="2_hf1sk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cp6o"]
+disable_ambient_light = true
+albedo_texture = ExtResource("1_rl2i0")
+
+[sub_resource type="SphereMesh" id="SphereMesh_4lkj6"]
+material = SubResource("StandardMaterial3D_1cp6o")
+radius = 0.4
+height = 0.4
+rings = 16
+is_hemisphere = true
+
+[node name="Hive" type="Node3D" unique_id=650450309]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=423689105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("SphereMesh_4lkj6")
+
+[node name="UnitStats" type="Node" parent="." unique_id=1291299322]
+script = ExtResource("2_hf1sk")
+spawn_role = 3
+spawn_priority = 1
+display_name = "Hive"
+tags = Array[int]([4])
+attack_effect = 2
+damage = 0
+faction = 1
+move_range = 0
+shoot_range = 0
+shoot_min_range = 0
+
+[node name="HpAnchor" type="Marker3D" parent="." unique_id=1004907052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5127051, -1.9)

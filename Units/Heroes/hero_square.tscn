@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dmoqrd5ljwcva"]
+
+[ext_resource type="Script" uid="uid://2h1yfcr3233v" path="res://Scripts/Unit.gd" id="1_rvw2b"]
+[ext_resource type="Script" uid="uid://ds67fgyhotmmg" path="res://Scripts/unit_stats.gd" id="1_ut2v7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bccbn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tmkpx"]
+material = SubResource("StandardMaterial3D_bccbn")
+size = Vector3(0.5, 2, 0.5)
+
+[node name="HeroSquare" type="Node3D" unique_id=1682472263 node_paths=PackedStringArray("stats")]
+script = ExtResource("1_rvw2b")
+stats = NodePath("UnitStats")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1236709136]
+mesh = SubResource("BoxMesh_tmkpx")
+
+[node name="UnitStats" type="Node" parent="." unique_id=130476419]
+script = ExtResource("1_ut2v7")
+max_hp = 4
+
+[node name="HpAnchor" type="Marker3D" parent="." unique_id=2034920493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41796923, -2.3)
